@@ -332,7 +332,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
     <div class="card-title">Uvoz pitanja iz Excela</div>
     <div class="card-sub">Uploadujte Excel fajl sa listom svih vijećničkih pitanja za ovu sjednicu</div>
 
-    <div class="dropzone" id="dz1" onclick="document.getElementById('file1').click()">
+    <label for="file1" class="dropzone" id="dz1" style="cursor:pointer">
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2E75B6" stroke-width="1.5">
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
         <polyline points="14 2 14 8 20 8"/>
@@ -341,7 +341,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
       </svg>
       <p><strong>Kliknite ovdje</strong> ili prevucite Excel fajl</p>
       <p style="margin-top:4px;font-size:0.76rem">.xlsx, .xls fajlovi</p>
-    </div>
+    </label>
     <input type="file" id="file1" accept=".xlsx,.xls" style="display:none" onchange="handleFile(this)"/>
 
     <!-- Manual entry fallback -->
@@ -439,7 +439,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
 
     <div id="collect-list"></div>
 
-    <div class="dropzone mt-8" id="dz2" onclick="document.getElementById('file2').click()">
+    <label for="file2" class="dropzone mt-8" id="dz2" style="cursor:pointer">
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#2E75B6" stroke-width="1.5">
         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
         <polyline points="17 8 12 3 7 8"/>
@@ -447,7 +447,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
       </svg>
       <p><strong>Uploadujte popunjeni fajl</strong> od službenika</p>
       <p style="font-size:0.76rem;margin-top:4px">.xlsx fajlovi</p>
-    </div>
+    </label>
     <input type="file" id="file2" accept=".xlsx,.xls" multiple style="display:none" onchange="collectAnswers(this)"/>
 
     <div class="sep"></div>
@@ -1172,8 +1172,11 @@ function handleFileObj(file) {
     `<strong style="color:#375623">✓ ${file.name}</strong>`;
 }
 
-// Init: add a few blank rows
-addRow(); addRow(); addRow();
+// Init: add a few blank rows after DOM ready
+document.addEventListener('DOMContentLoaded', function() {
+  addRow(); addRow(); addRow();
+  renderOfficersList();
+});
 </script>
 </body>
 </html>
